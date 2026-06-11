@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "wheel-throwing-foundations",
+    "title": "Wheel Throwing Foundations",
+    "description": "Learn centering, pulling, and trimming through guided studio exercises. Perfect for beginners who want hands-on instruction.",
+    "duration": "6 weeks",
+    "skillLevel": "Beginner",
+    "priceNote": "Contact for pricing and schedule",
+    "modules": [
+      {
+        "title": "Centering Clay",
+        "lessons": ["Preparing the wheel", "Finding center", "Opening forms"]
+      },
+      {
+        "title": "Pulling Walls",
+        "lessons": ["Even pressure", "Collar control", "Shaping cylinders"]
+      }
+    ]
+  },
+  {
+    "slug": "glaze-chemistry-for-potters",
+    "title": "Glaze Chemistry for Potters",
+    "description": "Understand glaze materials, test tiles, and firing results. A deeper dive for potters ready to develop their own surfaces.",
+    "duration": "8 weeks",
+    "skillLevel": "Intermediate",
+    "priceNote": "Contact for pricing and schedule",
+    "modules": [
+      {
+        "title": "Glaze Materials",
+        "lessons": ["Fluxes and silica", "Colorants", "Test tile workflow"]
+      }
+    ]
+  }
+]

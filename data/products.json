@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "studio-bowl-collection",
+    "title": "Studio Bowl Collection",
+    "description": "Hand-thrown bowls in a range of sizes with signature spiral centers and variegated teal, speckled, and earth-tone glazes. Great for everyday use or display.",
+    "price": 6500,
+    "category": "Bowls",
+    "available": true,
+    "featured": true,
+    "images": ["/images/bowl-collection.png"]
+  },
+  {
+    "slug": "teal-spiral-bowl",
+    "title": "Teal Spiral Bowl",
+    "description": "A large hand-thrown bowl with a deep teal glaze and textured, dotted rim. The spiral center and rich color make this a showpiece for any table.",
+    "price": 5500,
+    "category": "Bowls",
+    "available": true,
+    "featured": true,
+    "images": ["/images/teal-spiral-bowl.png"]
+  },
+  {
+    "slug": "ocean-collection",
+    "title": "Ocean Collection",
+    "description": "Sea-inspired pieces including plates, small dishes, turtle and starfish forms — all in a soft ocean-blue glaze with textured stamped surfaces.",
+    "price": 4200,
+    "category": "Dishes",
+    "available": true,
+    "featured": true,
+    "images": ["/images/ocean-pieces.png"]
+  },
+  {
+    "slug": "green-fish-platter",
+    "title": "Green Fish Platter",
+    "description": "A hand-built oval platter with carved fish relief and rich forest-green glaze. A one-of-a-kind statement piece for the kitchen or wall.",
+    "price": 8500,
+    "category": "Dishes",
+    "available": true,
+    "featured": false,
+    "images": ["/images/fish-platter.png"]
+  },
+  {
+    "slug": "leaf-dish",
+    "title": "Leaf Trinket Dish",
+    "description": "A hand-textured leaf dish pressed from a real leaf and glazed in deep forest green with copper highlights. Perfect for jewelry or on a coffee table.",
+    "price": 2800,
+    "category": "Dishes",
+    "available": true,
+    "featured": false,
+    "images": ["/images/leaf-dish.png"]
+  },
+  {
+    "slug": "three-bowl-set",
+    "title": "Three-Bowl Set",
+    "description": "A coordinated set of three hand-thrown bowls in complementary glazes — forest green, speckled grey, and soft white. Sold together.",
+    "price": 9500,
+    "category": "Bowls",
+    "available": true,
+    "featured": false,
+    "images": ["/images/three-bowls.png"]
+  },
+  {
+    "slug": "gold-geometric-dishes",
+    "title": "Gold Geometric Dishes",
+    "description": "A set of hand-built geometric slab dishes in square, triangular, and oval forms with metallic gold glaze. Modern and bold.",
+    "price": 7200,
+    "category": "Dishes",
+    "available": true,
+    "featured": false,
+    "images": ["/images/gold-geometric-dishes.png"]
+  },
+  {
+    "slug": "green-gourd-vessels",
+    "title": "Green Gourd Vessels",
+    "description": "Hand-thrown gourd-shaped vessels with carved wave details and a two-tone green glaze. Decorative and sculptural.",
+    "price": 6800,
+    "category": "Vessels",
+    "available": true,
+    "featured": false,
+    "images": ["/images/green-gourds.png"]
+  },
+  {
+    "slug": "holiday-ornament-set",
+    "title": "Holiday Ornament Set",
+    "description": "Hand-stamped clay ornaments in seasonal shapes — snowflakes, trees, stars, and Washington State outlines. Each set is unique.",
+    "price": 3600,
+    "category": "Seasonal",
+    "available": true,
+    "featured": false,
+    "images": ["/images/clay-christmas-ornaments.png"]
+  },
+  {
+    "slug": "camper-ornaments",
+    "title": "Camper Ornaments",
+    "description": "Cheerful hand-painted vintage camper ornaments in red, orange, and yellow. A fun and whimsical gift.",
+    "price": 1800,
+    "category": "Seasonal",
+    "available": true,
+    "featured": false,
+    "images": ["/images/camper-ornaments.png"]
+  }
+]

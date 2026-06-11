@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f3ef;
+  --foreground: #1c1917;
 }
 
 @theme inline {
@@ -12,15 +12,32 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.font-serif {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.editable-text {
+  outline: 2px dashed transparent;
+  outline-offset: 3px;
+  border-radius: 2px;
+  transition: outline-color 0.15s ease, background-color 0.15s ease;
+}
+
+.editable-text-idle {
+  outline-color: rgb(13 148 136 / 0.45);
+  cursor: text;
+}
+
+.editable-text-idle:hover {
+  background-color: rgb(13 148 136 / 0.08);
+}
+
+.editable-text-active {
+  outline-color: rgb(13 148 136);
+  background-color: rgb(13 148 136 / 0.12);
 }

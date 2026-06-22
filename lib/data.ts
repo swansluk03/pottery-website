@@ -13,10 +13,18 @@ import type { Course, GalleryImage, Product, SiteInfo } from "@/types";
 
 export async function getPageContent(page: PageId): Promise<Record<string, string>> {
   const defaults = PAGE_CONTENT_DEFAULTS[page];
-  const rows = await prisma.pageContent.findMany({ where: { page } });
-  const stored = Object.fromEntries(rows.map((row) => [row.key, row.value]));
 
-  return { ...defaults, ...stored };
+  if (!process.env.DATABASE_URL) {
+    return defaults;
+  }
+
+  try {
+    const rows = await prisma.pageContent.findMany({ where: { page } });
+    const stored = Object.fromEntries(rows.map((row) => [row.key, row.value]));
+    return { ...defaults, ...stored };
+  } catch {
+    return defaults;
+  }
 }
 
 export async function getSiteInfo(): Promise<SiteInfo> {
@@ -31,23 +39,47 @@ export async function getSiteInfo(): Promise<SiteInfo> {
 }
 
 export async function getProducts(): Promise<Product[]> {
-  const products = await prisma.product.findMany({
-    orderBy: { title: "asc" },
-  });
-  return products.map(mapProduct);
+  if (!process.env.DATABASE_URL) {
+    return [];
+  }
+
+  try {
+    const products = await prisma.product.findMany({
+      orderBy: { title: "asc" },
+    });
+    return products.map(mapProduct);
+  } catch {
+    return [];
+  }
 }
 
 export async function getFeaturedProducts(): Promise<Product[]> {
-  const products = await prisma.product.findMany({
-    where: { featured: true },
-    orderBy: { title: "asc" },
-  });
-  return products.map(mapProduct);
+  if (!process.env.DATABASE_URL) {
+    return [];
+  }
+
+  try {
+    const products = await prisma.product.findMany({
+      where: { featured: true },
+      orderBy: { title: "asc" },
+    });
+    return products.map(mapProduct);
+  } catch {
+    return [];
+  }
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | undefined> {
-  const product = await prisma.product.findUnique({ where: { slug } });
-  return product ? mapProduct(product) : undefined;
+  if (!process.env.DATABASE_URL) {
+    return undefined;
+  }
+
+  try {
+    const product = await prisma.product.findUnique({ where: { slug } });
+    return product ? mapProduct(product) : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 export async function getProductsByCategory(category?: string): Promise<Product[]> {
@@ -55,34 +87,66 @@ export async function getProductsByCategory(category?: string): Promise<Product[
     return getProducts();
   }
 
-  const products = await prisma.product.findMany({
-    where: {
-      category: {
-        equals: category,
-        mode: "insensitive",
-      },
-    },
-    orderBy: { title: "asc" },
-  });
+  if (!process.env.DATABASE_URL) {
+    return [];
+  }
 
-  return products.map(mapProduct);
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        category: {
+          equals: category,
+          mode: "insensitive",
+        },
+      },
+      orderBy: { title: "asc" },
+    });
+
+    return products.map(mapProduct);
+  } catch {
+    return [];
+  }
 }
 
 export async function getGalleryImages(): Promise<GalleryImage[]> {
-  const images = await prisma.galleryImage.findMany({
-    orderBy: { order: "asc" },
-  });
-  return images.map(mapGalleryImage);
+  if (!process.env.DATABASE_URL) {
+    return [];
+  }
+
+  try {
+    const images = await prisma.galleryImage.findMany({
+      orderBy: { order: "asc" },
+    });
+    return images.map(mapGalleryImage);
+  } catch {
+    return [];
+  }
 }
 
 export async function getCourses(): Promise<Course[]> {
-  const courses = await prisma.course.findMany({
-    orderBy: { title: "asc" },
-  });
-  return courses.map(mapCourse);
+  if (!process.env.DATABASE_URL) {
+    return [];
+  }
+
+  try {
+    const courses = await prisma.course.findMany({
+      orderBy: { title: "asc" },
+    });
+    return courses.map(mapCourse);
+  } catch {
+    return [];
+  }
 }
 
 export async function getCourseBySlug(slug: string): Promise<Course | undefined> {
-  const course = await prisma.course.findUnique({ where: { slug } });
-  return course ? mapCourse(course) : undefined;
+  if (!process.env.DATABASE_URL) {
+    return undefined;
+  }
+
+  try {
+    const course = await prisma.course.findUnique({ where: { slug } });
+    return course ? mapCourse(course) : undefined;
+  } catch {
+    return undefined;
+  }
 }

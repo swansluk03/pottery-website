@@ -25,11 +25,11 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' https://res.cloudinary.com data:",
       "font-src 'self'",
-      "connect-src 'self' https://res.cloudinary.com https://api.cloudinary.com",
+      "connect-src 'self' https://res.cloudinary.com https://api.cloudinary.com https://va.vercel-scripts.com https://vitals.vercel-insights.com",
       "frame-ancestors 'none'",
     ].join("; "),
   },

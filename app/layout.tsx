@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { PageEditShell } from "@/components/admin/PageEditShell";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -53,6 +54,7 @@ export default async function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </PageEditShell>
+        <SpeedInsights />
       </body>
     </html>
   );

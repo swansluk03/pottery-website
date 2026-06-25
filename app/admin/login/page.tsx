@@ -5,6 +5,18 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 
+function isSafeRedirect(url: string) {
+  return url.startsWith("/") && !url.startsWith("//");
+}
+
+function getSafeRedirectUrl(callbackUrl: string | null) {
+  if (callbackUrl && isSafeRedirect(callbackUrl)) {
+    return callbackUrl;
+  }
+
+  return "/admin";
+}
+
 export default function AdminLoginPage() {
   const router = useRouter();
   const [callbackUrl, setCallbackUrl] = useState("/admin");
@@ -15,7 +27,7 @@ export default function AdminLoginPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setCallbackUrl(params.get("callbackUrl") ?? "/admin");
+    setCallbackUrl(getSafeRedirectUrl(params.get("callbackUrl")));
   }, []);
 
   useEffect(() => {

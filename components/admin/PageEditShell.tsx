@@ -62,7 +62,7 @@ function PageEditShellInner({ children, initialGlobalContent }: PageEditShellPro
     <PageEditProvider editMode={editMode} initialGlobalContent={initialGlobalContent}>
       {editMode && (
         <div className="border-b border-teal-700 bg-teal-900 px-4 py-2 text-center text-sm text-teal-100">
-          Page text editing is on — click highlighted text to change it
+          Page editing is on — click highlighted text or images to change them
         </div>
       )}
       {children}

@@ -16,9 +16,9 @@ export function PageEditToolbar() {
     <div className="fixed inset-x-0 bottom-0 z-[60] border-t border-teal-800 bg-stone-900/95 px-4 py-3 text-white backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-sm font-medium">Editing page text</p>
+          <p className="text-sm font-medium">Editing page content</p>
           <p className="text-xs text-stone-400">
-            Click any highlighted text to edit. Press Escape to cancel a block.
+            Click highlighted text or images to edit. Use Save changes when finished.
           </p>
           {error && <p className="mt-1 text-xs text-red-300">{error}</p>}
         </div>

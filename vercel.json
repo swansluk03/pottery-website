@@ -1,3 +1,23 @@
 {
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "firewall": {
+    "rules": [
+      {
+        "src": "/api/contact",
+        "rateLimit": {
+          "algo": "sliding_window",
+          "window": "60s",
+          "limit": 5
+        }
+      },
+      {
+        "src": "/api/auth",
+        "rateLimit": {
+          "algo": "sliding_window",
+          "window": "60s",
+          "limit": 10
+        }
+      }
+    ]
+  }
 }

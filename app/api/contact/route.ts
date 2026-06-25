@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { ZodError } from "zod";
 import { getSiteInfo } from "@/lib/data";
 import { contactSchema } from "@/lib/validations";
 
@@ -49,6 +50,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
+    if (error instanceof ZodError) {
+      return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+    }
+
     const message =
       error instanceof Error ? error.message : "Failed to send message";
     return NextResponse.json({ error: message }, { status: 400 });

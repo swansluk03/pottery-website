@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { EditableHomeImage } from "@/components/admin/EditableHomeImage";
 import { EditableMailtoButton } from "@/components/admin/EditableMailtoButton";
 import { EditableText } from "@/components/admin/EditableText";
 import { PageEditPage } from "@/components/admin/PageEditPage";
@@ -76,18 +77,17 @@ export default async function HomePage() {
               </div>
             </div>
 
-            <div className="relative h-72 lg:h-auto">
-              <Image
-                src="/images/bowl-collection.png"
-                alt="Hand-thrown pottery bowls by Barn Owl Pottery"
-                fill
-                className="object-cover"
-                priority
-                quality={92}
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              <div className="absolute inset-0 bg-stone-900/20" />
-            </div>
+            <EditableHomeImage
+              page="home"
+              imageKey="hero.image"
+              altKey="hero.imageAlt"
+              defaultSrc="/images/bowl-collection.png"
+              defaultAlt="Hand-thrown pottery bowls by Barn Owl Pottery"
+              variant="hero"
+              priority
+              quality={92}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
         </section>
 
@@ -127,11 +127,13 @@ export default async function HomePage() {
         </section>
 
         <section className="relative h-72 sm:h-96 overflow-hidden">
-          <Image
-            src="/images/teal-spiral-bowl.png"
-            alt="Teal spiral bowl by Barn Owl Pottery"
-            fill
-            className="object-cover object-center"
+          <EditableHomeImage
+            page="home"
+            imageKey="banner.image"
+            altKey="banner.imageAlt"
+            defaultSrc="/images/teal-spiral-bowl.png"
+            defaultAlt="Teal spiral bowl by Barn Owl Pottery"
+            variant="banner"
             quality={92}
             sizes="100vw"
           />
@@ -215,15 +217,14 @@ export default async function HomePage() {
         <section className="bg-stone-900 px-4 py-16 sm:px-6">
           <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2 lg:items-center">
             <div className="flex items-start gap-5">
-              <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-2 ring-teal-600">
-                <Image
-                  src="/images/barn-owl-logo.png"
-                  alt="Barn Owl Pottery logo"
-                  fill
-                  className="object-cover"
-                  sizes="80px"
-                />
-              </div>
+              <EditableHomeImage
+                page="home"
+                imageKey="about.logo"
+                altKey="about.logoAlt"
+                defaultSrc="/images/barn-owl-logo.png"
+                defaultAlt="Barn Owl Pottery logo"
+                variant="logo"
+              />
               <div>
                 <EditableText
                   page="home"

@@ -4,7 +4,7 @@ const editPages = [
   {
     label: "Homepage",
     href: "/?edit=true",
-    description: "Hero, featured work, banner, gallery preview, about, and contact section",
+    description: "Hero image, banner image, about logo, featured work, gallery preview, and text",
   },
   {
     label: "Shop",

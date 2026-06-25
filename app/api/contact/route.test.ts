@@ -69,7 +69,7 @@ describe("contact route", () => {
     const data = await response.json();
 
     expect(response.status).toBe(400);
-    expect(data.error).toBeTruthy();
+    expect(data.error).toBe("Invalid request");
     expect(mockSend).not.toHaveBeenCalled();
   });
 

@@ -41,3 +41,15 @@ body {
   outline-color: rgb(13 148 136);
   background-color: rgb(13 148 136 / 0.12);
 }
+
+.editable-image-idle {
+  outline: 2px dashed rgb(13 148 136 / 0.45);
+  outline-offset: 3px;
+  border-radius: 0.75rem;
+}
+
+.editable-image-active {
+  outline: 2px solid rgb(13 148 136);
+  outline-offset: 3px;
+  border-radius: 0.75rem;
+}

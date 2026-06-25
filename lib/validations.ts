@@ -1,11 +1,15 @@
 import { z } from "zod";
+import { PAGE_IDS } from "@/lib/page-content-defaults";
 
 export const contactSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Valid email required"),
   type: z.enum(["general", "purchase", "class"]),
-  subject: z.string().optional(),
-  message: z.string().min(10, "Please write at least a few sentences"),
+  subject: z.string().max(500).optional(),
+  message: z
+    .string()
+    .min(10, "Please write at least a few sentences")
+    .max(5000),
 });
 
 export const productSchema = z.object({
@@ -54,7 +58,7 @@ export type CourseFormData = z.infer<typeof courseSchema>;
 export type SiteSettingsFormData = z.infer<typeof siteSettingsSchema>;
 
 export const pageContentUpdateSchema = z.object({
-  page: z.string().min(1, "Page is required"),
+  page: z.enum(PAGE_IDS),
   blocks: z.record(z.string(), z.string()),
 });
 

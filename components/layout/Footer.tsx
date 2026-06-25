@@ -10,8 +10,8 @@ export function Footer() {
   const email = getValue("global", "site.email", "barnowlpottery@gmail.com");
 
   return (
-    <footer className="mt-auto border-t border-stone-200 bg-stone-900 text-stone-300">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:justify-between md:items-start">
+    <footer className="mt-auto border-t border-stone-200 bg-stone-900 pb-[env(safe-area-inset-bottom,0px)] text-stone-300">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:items-start md:justify-between">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-3">
             <div className="relative h-14 w-14 overflow-hidden rounded-full ring-2 ring-teal-600/50">
@@ -60,7 +60,7 @@ export function Footer() {
           </a>
         </div>
 
-        <div className="flex gap-12 text-sm">
+        <div className="flex gap-8 text-sm sm:gap-12">
           <div className="flex flex-col gap-3">
             <EditableText
               page="global"

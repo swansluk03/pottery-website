@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import { PageEditShell } from "@/components/admin/PageEditShell";
 import { Header } from "@/components/layout/Header";
@@ -10,6 +10,12 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -41,7 +47,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={`${geistSans.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[#f5f3ef] text-stone-900">
+      <body className="flex min-h-full flex-col overflow-x-clip bg-[#f5f3ef] text-stone-900">
         <PageEditShell initialGlobalContent={globalContent}>
           <Header />
           <main className="flex-1">{children}</main>

@@ -1,52 +1,26 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 import { ZodError } from "zod";
 import { getSiteInfo } from "@/lib/data";
+import { sendContactEmail } from "@/lib/email";
 import { contactSchema } from "@/lib/validations";
-
-const inquiryLabels = {
-  general: "General inquiry",
-  purchase: "Purchase inquiry",
-  class: "Class inquiry",
-};
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const data = contactSchema.parse(body);
 
-    const apiKey = process.env.RESEND_API_KEY;
     const contactEmail = process.env.CONTACT_EMAIL ?? (await getSiteInfo()).email;
+    const fromAddress =
+      process.env.EMAIL_FROM ?? "Barn Owl Pottery <onboarding@resend.dev>";
 
-    if (!apiKey) {
-      return NextResponse.json(
-        {
-          error:
-            "Email is not configured yet. Set RESEND_API_KEY and CONTACT_EMAIL in your environment.",
-        },
-        { status: 503 }
-      );
-    }
-
-    const resend = new Resend(apiKey);
-    const inquiryLabel = inquiryLabels[data.type];
-    const subject =
-      data.subject?.trim() ||
-      `${inquiryLabel} from ${data.name}`.slice(0, 120);
-
-    await resend.emails.send({
-      from: process.env.EMAIL_FROM ?? "Barn Owl Pottery <onboarding@resend.dev>",
+    const result = await sendContactEmail(data, {
       to: contactEmail,
-      replyTo: data.email,
-      subject,
-      text: [
-        `Name: ${data.name}`,
-        `Email: ${data.email}`,
-        `Type: ${inquiryLabel}`,
-        "",
-        data.message,
-      ].join("\n"),
+      from: fromAddress,
     });
+
+    if (!result.ok) {
+      return NextResponse.json({ error: result.error }, { status: result.status });
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
@@ -54,8 +28,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid request" }, { status: 400 });
     }
 
-    const message =
-      error instanceof Error ? error.message : "Failed to send message";
-    return NextResponse.json({ error: message }, { status: 400 });
+    console.error("Contact form failed:", error);
+
+    return NextResponse.json(
+      { error: "Failed to send message. Please try again later." },
+      { status: 500 }
+    );
   }
 }

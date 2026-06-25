@@ -20,7 +20,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
         <p className="text-sm uppercase tracking-wide text-amber-800">
           {course.skillLevel}
         </p>
-        <h1 className="mt-2 font-serif text-4xl text-stone-900">{course.title}</h1>
+        <h1 className="mt-2 font-serif text-3xl text-stone-900 sm:text-4xl">{course.title}</h1>
         <div className="mt-4 flex flex-wrap gap-4 text-sm text-stone-500">
           <span>{course.duration}</span>
           <span>{course.priceNote}</span>
@@ -31,7 +31,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
         </div>
       </div>
 
-      <section className="mt-12 rounded-3xl border border-stone-200 bg-white p-8">
+      <section className="mt-12 rounded-3xl border border-stone-200 bg-white p-6 sm:p-8">
         <h2 className="font-serif text-2xl text-stone-900">What you&apos;ll cover</h2>
         <div className="mt-6 space-y-6">
           {course.modules.map((module, index) => (

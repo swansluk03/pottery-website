@@ -17,6 +17,8 @@
     "db:seed-gallery-courses": "tsx prisma/seed-gallery-courses.ts",
     "db:studio": "dotenv -e .env.local -- prisma studio",
     "hash-password": "tsx scripts/hash-password.ts",
+    "check:email": "node scripts/check-email-config.mjs",
+    "setup:resend": "node scripts/resend-setup-guide.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },

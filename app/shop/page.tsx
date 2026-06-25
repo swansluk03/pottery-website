@@ -32,7 +32,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
             contentKey="intro.heading"
             defaultValue="Available pieces"
             as="h1"
-            className="mt-2 font-serif text-4xl text-stone-900"
+            className="mt-2 font-serif text-3xl text-stone-900 sm:text-4xl"
           />
           <EditableText
             page="shop"

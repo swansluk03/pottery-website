@@ -20,7 +20,7 @@ export default async function HomePage() {
       <div>
         <section className="relative overflow-hidden bg-stone-900">
           <div className="mx-auto grid max-w-6xl gap-0 lg:grid-cols-2">
-            <div className="flex flex-col justify-center px-6 py-20 sm:px-10 lg:py-28">
+            <div className="flex flex-col justify-center px-4 py-12 sm:px-6 sm:py-20 lg:px-10 lg:py-28">
               <EditableText
                 page="home"
                 contentKey="hero.location"
@@ -28,7 +28,7 @@ export default async function HomePage() {
                 as="p"
                 className="text-xs uppercase tracking-[0.3em] text-teal-400 font-medium"
               />
-              <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl lg:text-6xl">
+              <h1 className="mt-4 font-serif text-3xl leading-tight text-white sm:text-5xl lg:text-6xl">
                 <EditableText
                   page="home"
                   contentKey="hero.titleLine1"
@@ -92,7 +92,7 @@ export default async function HomePage() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <div className="flex items-end justify-between gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <EditableText
                 page="home"
@@ -106,7 +106,7 @@ export default async function HomePage() {
                 contentKey="featured.heading"
                 defaultValue="Pieces from the studio"
                 as="h2"
-                className="mt-2 font-serif text-3xl text-stone-900"
+                className="mt-2 font-serif text-2xl text-stone-900 sm:text-3xl"
               />
             </div>
             <Link href="/shop" className="text-sm font-medium text-stone-500 hover:text-teal-700 transition">
@@ -151,7 +151,7 @@ export default async function HomePage() {
                 contentKey="banner.heading"
                 defaultValue="Made by hand. Finished by fire."
                 as="h2"
-                className="font-serif text-3xl sm:text-4xl"
+                className="font-serif text-2xl sm:text-4xl"
               />
               <Link href="/contact" className="mt-6 inline-block">
                 <Button className="bg-teal-700 hover:bg-teal-600 mt-4">
@@ -168,7 +168,7 @@ export default async function HomePage() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <div className="flex items-end justify-between gap-4">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <EditableText
                 page="home"
@@ -182,7 +182,7 @@ export default async function HomePage() {
                 contentKey="gallery.heading"
                 defaultValue="From the studio"
                 as="h2"
-                className="mt-2 font-serif text-3xl text-stone-900"
+                className="mt-2 font-serif text-2xl text-stone-900 sm:text-3xl"
               />
             </div>
             <Link href="/gallery" className="text-sm font-medium text-stone-500 hover:text-teal-700 transition">
@@ -249,7 +249,7 @@ export default async function HomePage() {
                 />
               </div>
             </div>
-            <div className="rounded-3xl border border-stone-700 bg-stone-800 p-8">
+            <div className="rounded-3xl border border-stone-700 bg-stone-800 p-6 sm:p-8">
               <EditableText
                 page="home"
                 contentKey="contact.heading"

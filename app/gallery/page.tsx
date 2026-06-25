@@ -27,7 +27,7 @@ export default async function GalleryPage() {
             contentKey="intro.heading"
             defaultValue="Work from the studio"
             as="h1"
-            className="mt-2 font-serif text-4xl text-stone-900"
+            className="mt-2 font-serif text-3xl text-stone-900 sm:text-4xl"
           />
           <EditableText
             page="gallery"
@@ -63,7 +63,7 @@ export default async function GalleryPage() {
             contentKey="cta.heading"
             defaultValue="Like what you see?"
             as="h2"
-            className="font-serif text-3xl"
+            className="font-serif text-2xl sm:text-3xl"
           />
           <EditableText
             page="gallery"

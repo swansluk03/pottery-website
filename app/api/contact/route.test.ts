@@ -1,20 +1,16 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const { mockGetSiteInfo, mockSend } = vi.hoisted(() => ({
+const { mockGetSiteInfo, mockSendContactEmail } = vi.hoisted(() => ({
   mockGetSiteInfo: vi.fn(),
-  mockSend: vi.fn(),
+  mockSendContactEmail: vi.fn(),
 }));
 
 vi.mock("@/lib/data", () => ({
   getSiteInfo: mockGetSiteInfo,
 }));
 
-vi.mock("resend", () => ({
-  Resend: class {
-    emails = {
-      send: mockSend,
-    };
-  },
+vi.mock("@/lib/email", () => ({
+  sendContactEmail: mockSendContactEmail,
 }));
 
 import { POST } from "@/app/api/contact/route";
@@ -28,9 +24,7 @@ describe("contact route", () => {
       email: "barnowlpottery@gmail.com",
       story: "Studio story",
     });
-    mockSend.mockResolvedValue({ id: "email_123" });
-    process.env.RESEND_API_KEY = "test_key";
-    process.env.CONTACT_EMAIL = "contact@example.com";
+    mockSendContactEmail.mockResolvedValue({ ok: true, id: "email_123" });
   });
 
   it("sends a contact email for valid input", async () => {
@@ -50,7 +44,7 @@ describe("contact route", () => {
 
     expect(response.status).toBe(200);
     expect(data.success).toBe(true);
-    expect(mockSend).toHaveBeenCalledOnce();
+    expect(mockSendContactEmail).toHaveBeenCalledOnce();
   });
 
   it("returns 400 for invalid input", async () => {
@@ -70,11 +64,16 @@ describe("contact route", () => {
 
     expect(response.status).toBe(400);
     expect(data.error).toBe("Invalid request");
-    expect(mockSend).not.toHaveBeenCalled();
+    expect(mockSendContactEmail).not.toHaveBeenCalled();
   });
 
   it("returns 503 when Resend is not configured", async () => {
-    delete process.env.RESEND_API_KEY;
+    mockSendContactEmail.mockResolvedValue({
+      ok: false,
+      status: 503,
+      error:
+        "Email is not configured yet. Set RESEND_API_KEY in your environment.",
+    });
 
     const request = new Request("http://localhost/api/contact", {
       method: "POST",
@@ -92,5 +91,31 @@ describe("contact route", () => {
 
     expect(response.status).toBe(503);
     expect(data.error).toContain("Email is not configured");
+  });
+
+  it("returns 502 when Resend rejects the send", async () => {
+    mockSendContactEmail.mockResolvedValue({
+      ok: false,
+      status: 502,
+      error:
+        "Unable to send your message right now. Please try again later or email us directly.",
+    });
+
+    const request = new Request("http://localhost/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: "Kim Swanson",
+        email: "kim@example.com",
+        type: "general",
+        message: "Hello, I would like to learn more about your classes.",
+      }),
+    });
+
+    const response = await POST(request);
+    const data = await response.json();
+
+    expect(response.status).toBe(502);
+    expect(data.error).toContain("Unable to send your message");
   });
 });

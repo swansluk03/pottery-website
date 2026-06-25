@@ -22,9 +22,9 @@ export function ContactIntro() {
         contentKey="intro.heading"
         defaultValue="Get in touch"
         as="h1"
-        className="mt-2 font-serif text-4xl text-stone-900"
+        className="mt-2 font-serif text-3xl text-stone-900 sm:text-4xl"
       />
-      <p className="mt-4 text-stone-600 leading-7">
+      <p className="mt-4 break-words text-stone-600 leading-7">
         <EditableText
           page="contact"
           contentKey="intro.descriptionPrefix"

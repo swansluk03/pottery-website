@@ -25,7 +25,7 @@ export default async function CoursesPage() {
             contentKey="intro.heading"
             defaultValue="Learn pottery with Kim"
             as="h1"
-            className="mt-2 font-serif text-4xl text-stone-900"
+            className="mt-2 font-serif text-3xl text-stone-900 sm:text-4xl"
           />
           <EditableText
             page="courses"
